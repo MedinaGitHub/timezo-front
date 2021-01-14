@@ -1,6 +1,6 @@
 import React, { lazy, useState, useEffect } from 'react';
 import { Switch, Route, Redirect, useLocation } from 'react-router-dom';
-import ReadEvent from './pages/event/ReadEvent';
+import ReadEvent from './pages/ReadEvent';
 import CreateEvent from './pages/event/CreateEvent';
 
 
