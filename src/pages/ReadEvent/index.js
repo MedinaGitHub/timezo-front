@@ -14,6 +14,7 @@ export default function ReadEvent() {
 
     const { id_owner, id_counter } = useParams();
     const [event_data, setEvent_data] = useState(null)
+    
 
     const optionsTime =
     {

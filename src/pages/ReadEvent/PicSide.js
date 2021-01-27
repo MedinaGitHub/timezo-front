@@ -14,7 +14,7 @@ const PicSide = ({ link_event, picture }) => {
             </div>
 
             <div className="blurred">
-                <img src={logo} alt="" />
+                <img src={picture} alt="" />
             </div>
 
         </section>
