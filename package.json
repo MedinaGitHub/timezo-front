@@ -15,6 +15,7 @@
     "bowser": "^2.11.0",
     "calendar-link": "^2.0.6",
     "date-fns": "^2.16.1",
+    "ga-4-react": "^0.1.271",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-ga": "^3.3.0",

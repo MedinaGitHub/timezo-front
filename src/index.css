@@ -271,7 +271,8 @@ header {
     border-radius: 20px;
 }
 
-header .logo {
+ .logo {
+    background-image: url(./img/timezo.svg) ;
     width: 150px;
     height: 100%;
     text-align: center;
@@ -281,7 +282,6 @@ header .logo {
     justify-content: center;
     align-items: center;
     font-size: 40px;
-    display: none;
 }
 
 header .menu {
@@ -333,7 +333,7 @@ header .menu {
 
 header nav {
     display: flex;
-    font-size: 12px;
+    font-size: 14px;
     /*font-size: 14px;*/
     /*text-transform: uppercase; */
     flex-wrap: wrap;
@@ -357,14 +357,14 @@ header nav a.menu__hl {
     /* padding: 0 20px; */
 }
 	
-header nav a.menu__expand {
+header nav .menu__expand {
     /* border-left: 1px solid #ccc; */
     background: url(./img/menu.svg) no-repeat center/16px;
     width: 50px;
 }
 
 body.event header .logo {
-    display: none;
+     /*   display: none; */
 }
 
 body.event header .menu {
@@ -1507,4 +1507,44 @@ width: 100%;
     display: inline-block;
     cursor: pointer;
     margin-top: 10px;
+}
+
+.select-header .MuiInput-formControl{
+        /* background-color: white; */
+        width: 0px !important;
+        /* height: 0px; */
+        visibility: collapse;
+}
+
+
+#menu- .MuiPaper-rounded{
+    margin-top: 55px !important;
+    margin-left: -8px !important;
+    border-radius:16px !important;
+}
+.MuiPaper-rounded{
+    border-radius:16px !important;
+}
+
+.style-text{
+    color: #666;
+    font-size: 14px;
+    display: contents;
+}
+
+.addthismargin{ 
+    margin-top: 10px;
+}
+
+.imgTimezo{
+    z-index: 999;
+    position: absolute;
+}
+
+.imgTimezo img{
+    height: 68px;
+    width: 110px;
+    margin-left: 26px;
+    margin-top: 8px;
+    display: flex;
 }

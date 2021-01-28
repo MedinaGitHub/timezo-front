@@ -3,7 +3,7 @@ import { google, outlook, office365, yahoo, ics } from "calendar-link";
 import Bowser from "bowser";
 
 
-const Calendars = ({ name, timeTZ }) => {
+const Calendars = ({ name, timeTZ, timeLocal }) => {
 
     const [browser, setBrowser] = useState()
     const bowseer = Bowser.getParser(window.navigator.userAgent);
@@ -24,6 +24,11 @@ const Calendars = ({ name, timeTZ }) => {
         return s;
     }
 
+    function toTimestamp(strDate){
+        var datum = Date.parse(strDate);
+        return datum/1000;
+     }
+
     useEffect(() => {
         console.log(1)
         console.log('sw', sw)
@@ -32,24 +37,32 @@ const Calendars = ({ name, timeTZ }) => {
             /*global showNotification, TimestampTrigger*/
             /*eslint no-undef: "error"*/
             const requestServices = async () => {
-                debugger
+                 
 
                 if ("showTrigger" in Notification.prototype) {
                     /* Notification Triggers supported */
                     console.log('Notification Triggers supported')
                 }
-                debugger;
+                 ;
                 const reg = await sw.getRegistration();
-
+                console.log('timeTZ',timeTZ)
 
 
                 Notification.requestPermission().then(permission => {
                     if (permission !== 'granted') {
                         alert('you need to allow push notifications');
                     } else {
-                        const timestamp = new Date().getTime() + 10 * 1000;
+                        //const timestamp = new Date().getTime() + 10 * 1000;
+                        const timestamp  =   new Date(timeTZ).getTime() 
+                        console.log('timeTZ',timeTZ)
+                        console.log('timestap que le pego', new Date(timeTZ).getTime() )
+
+                        console.log(new Date().getTime())
+
+                        console.log('new Date(eventTZ)',toTimestamp(timeTZ) )
+                        //timestamp || Calcular cuanto falta de aquí a que termine el evento.
                         const scheduledTime = new Date(timestamp);
-                        console.log('reeg', reg)
+                        console.log('timeLocal', timeLocal)
 
 
                         console.log(bowseer.getBrowser());
@@ -59,7 +72,7 @@ const Calendars = ({ name, timeTZ }) => {
                                 'Scheduled Push Notification',
                                 {
                                     tag: timestamp, // a unique ID
-                                    body: 'Hi there, it\'s ' + pad(scheduledTime.getHours()) + ':' + pad(scheduledTime.getMinutes()), // content of the push notification
+                                    body: 'El evento '+name+' Comienza en 5 minutos !', // content of the push notification
                                     showTrigger: new TimestampTrigger(timestamp), // set the time for the push notification
                                     data: {
                                         url: window.location.href, // pass the current url to the notification
@@ -71,7 +84,7 @@ const Calendars = ({ name, timeTZ }) => {
                                 'Scheduled Push Notification',
                                 {
                                     tag: timestamp, // a unique ID
-                                    body: 'Hi there, it\'s ' + pad(scheduledTime.getHours()) + ':' + pad(scheduledTime.getMinutes()), // content of the push notification
+                                    body: 'El evento '+name+' Comienza en 5 minutos !', // content of the push notification
                                     timestamp: timestamp, // set the time for the push notification
                                     data: {
                                         url: window.location.href, // pass the current url to the notification

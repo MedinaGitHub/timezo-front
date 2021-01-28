@@ -78,7 +78,7 @@ export const auth = (email, password) => {
         dispatch(updateToken(response.data.token));
       })
       .catch((err) => {
-        debugger;
+         
         dispatch(authFail(err));
       });
   };
@@ -123,7 +123,7 @@ export const updToken = (token) => {
 
 export const updateToken = (token) => {
   return (dispatch) => {
-    debugger
+     
     localStorage.setItem('token', token);
     axios.defaults.headers.common['Authorization'] = token;
     axios.defaults.headers.common.Authorization = token;
@@ -189,7 +189,7 @@ export const signup = (userData) => {
       })
       .catch((err) => {
         if (err) {
-          debugger;
+           ;
           console.log('salto el medio error', err)
           dispatch(authFail(err));
         }
@@ -303,7 +303,7 @@ const reducerAuthSuccess = (state, action) => {
 };
 
 const reducerAuthFail = (state, action) => {
-  debugger;
+   ;
   return updateObject(state, {
     error: action.error,
     loading: false

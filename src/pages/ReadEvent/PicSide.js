@@ -22,3 +22,13 @@ const PicSide = ({ link_event, picture }) => {
 }
 
 export { PicSide }
+
+
+/*
+Primero el flujo de la data
+Click a me interesa
+Reviso que en el localStorage no le haya hecho click, y si tiene click cambiar el ¨Gracias¨ a un OK, ya le avisamos tu interés.
+Viaja a la API el país y el  GMT que tenga el gallo. junto el ID de la invitación  y el dueño de la invitación.
+Luego, le dejo en el localStorage un diccionario de Dueño/invitacion  para que no haga mil veces click
+Al final la persona puede ver los distintos GMT y su número de veces que le hicieron asistiré.
+*/
