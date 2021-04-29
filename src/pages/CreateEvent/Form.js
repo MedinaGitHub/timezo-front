@@ -20,6 +20,7 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Checkbox from '@material-ui/core/Checkbox';
+import { LensTwoTone } from '@material-ui/icons';
 
 const PurpleCheckbox = withStyles({
     root: {
@@ -39,6 +40,7 @@ const Form = ({ openModalSet }) => {
     const auth = useSelector(({ auth }) => auth);
     const [valueAutocomplete, setValueAutocomplete] = React.useState([]);
     const [selectedDate, handleDateChange] = useState(null);
+    const [captcha, setCaptcha] = useState(null);
     const [link, setlink] = useState()
     const [error, setError] = useState()
     const [bodyFormData, setBodyFormData] = useState()
@@ -46,7 +48,7 @@ const Form = ({ openModalSet }) => {
     const reRef = useRef();
 
     const [checkBoxes, setCheckBoxes] = React.useState({
-        createAccount: true,
+        createAccount: false,
     });
 
     const handleChangeChecks = (event) => {
@@ -54,8 +56,6 @@ const Form = ({ openModalSet }) => {
     };
 
     const sendDataToServer = async () => {
-         ;
-        console.log('auth.token ')
         if (bodyFormData) {
             var response;
             if (auth.token) {
@@ -73,7 +73,6 @@ const Form = ({ openModalSet }) => {
     }
 
     useEffect(() => {
-         ;
         if (bodyFormData) {
             if (checkBoxes.createAccount == false) {
                 sendDataToServer()
@@ -87,7 +86,6 @@ const Form = ({ openModalSet }) => {
     }, [bodyFormData, auth.token])
 
     useEffect(() => {
-         ;
         if (bodyFormData) {
             if (checkBoxes.createAccount == false) {
                 sendDataToServer()
@@ -102,11 +100,15 @@ const Form = ({ openModalSet }) => {
 
 
     const onSubmit = async (data, e) => {
-
+        setError(null)
         setLoading('Cargando...')
-        const token_recaptcha = await reRef.current.executeAsync();
+        let token_recaptcha = null;
+        if (!captcha) {
+            token_recaptcha = await reRef.current.executeAsync();
+            setCaptcha(token_recaptcha)
+        }
         var bodyFormData = new FormData();
-        bodyFormData.append('token_recaptcha', token_recaptcha);
+        bodyFormData.append('token_recaptcha', captcha ? captcha : token_recaptcha);
         bodyFormData.append('_name', data._name);
         bodyFormData.append('_description', data._description);
         bodyFormData.append('_categories', JSON.stringify(valueAutocomplete));
@@ -131,7 +133,7 @@ const Form = ({ openModalSet }) => {
                 <div className="form__event">
                     <div className="cont__form">
                         <div className="form--input">
-                            <input type="text" autocomplete="off" className="normal" placeholder="Nombre Evento" minlength="2" maxlength="150" required
+                            <input value={'hola'} type="text" autocomplete="off" className="normal" placeholder="Nombre Evento" minlength="2" maxlength="150" required
                                 name="_name"
                                 ref={
                                     register({
@@ -142,7 +144,7 @@ const Form = ({ openModalSet }) => {
                         </div>
 
                         <div className="form--input optional">
-                            <input type="text" autocomplete="off" className="normal" placeholder="Descripción" minlength="0" maxlength="1000"
+                            <input value={'hola'} type="text" autocomplete="off" className="normal" placeholder="Descripción" minlength="0" maxlength="1000"
                                 name="_description"
                                 ref={
                                     register({
@@ -208,7 +210,7 @@ const Form = ({ openModalSet }) => {
                         </div>
 
                         <div className="form--input">
-                            <input autocomplete="off" name="_link_event" type="text" className="normal" placeholder="Link Evento"
+                            <input value={'www.google.cl'} autocomplete="off" name="_link_event" type="text" className="normal" placeholder="Link Evento"
                                 ref={
                                     register({
                                         required: { value: true, message: 'Ingrese la imágen del evento' }

@@ -1548,3 +1548,18 @@ width: 100%;
     margin-top: 8px;
     display: flex;
 }
+
+
+.link-privacity {
+    position: absolute;
+    bottom: 1px;
+    right: 1px;
+    color: white;
+}
+
+.link-conditions {
+    position: absolute;
+    bottom: 1px;
+    right: 120px;
+    color: white;
+}

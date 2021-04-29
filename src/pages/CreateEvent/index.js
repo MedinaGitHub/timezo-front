@@ -3,6 +3,7 @@ import { Header } from './Header';
 import { Signup } from './Signup'
 import Form from './Form'
 import { Logo } from '../Logo';
+import { Link } from "react-router-dom";
 
 
 export default function CreateEvent() {
@@ -16,6 +17,7 @@ export default function CreateEvent() {
             <Header openModalSet={openModalSet} />
             <Form openModalSet={openModalSet} />
             <div class="bg__full"></div>
+            <div> <Link className={'link-conditions'} to="/terms_and_Conditions">Terms And Conditions</Link> <Link className={'link-privacity'} to="/privacy_policy">Privacy Policy</Link>  </div>
         </main>
     )
 };
