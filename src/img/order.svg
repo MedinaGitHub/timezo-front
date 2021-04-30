@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 9 9">
+  <g id="Layer_2" data-name="Layer 2" transform="translate(-0.333 -0.333)">
+    <g id="invisible_box" data-name="invisible box">
+      <rect id="Rectángulo_75" data-name="Rectángulo 75" width="9" height="9" transform="translate(0.333 0.333)" fill="none"/>
+    </g>
+    <g id="icons_Q2" data-name="icons Q2" transform="translate(1.134 1.89)">
+      <g id="Grupo_75" data-name="Grupo 75">
+        <path id="Trazado_41" data-name="Trazado 41" d="M12.805,10.378a.378.378,0,0,1-.378.378H6.378A.378.378,0,0,1,6,10.378H6A.378.378,0,0,1,6.378,10h6.049A.378.378,0,0,1,12.805,10.378Z" transform="translate(-6 -10)" fill="#8266e2"/>
+        <path id="Trazado_42" data-name="Trazado 42" d="M12.805,22.378a.378.378,0,0,1-.378.378H6.378A.378.378,0,0,1,6,22.378H6A.378.378,0,0,1,6.378,22h6.049A.378.378,0,0,1,12.805,22.378Z" transform="translate(-6 -19.732)" fill="#8266e2"/>
+        <path id="Trazado_43" data-name="Trazado 43" d="M11.419,34.378a.346.346,0,0,1-.3.378H6.3a.346.346,0,0,1-.3-.378H6A.346.346,0,0,1,6.3,34h4.817A.346.346,0,0,1,11.419,34.378Z" transform="translate(-4.614 -29.463)" fill="#8266e2"/>
+      </g>
+    </g>
+  </g>
+</svg>

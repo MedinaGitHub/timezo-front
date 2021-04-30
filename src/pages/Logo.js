@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import logo from '../img/timezo.svg';
+import logo from '../img/logo__timezo.svg';
 
 const Logo = () => {
     return (

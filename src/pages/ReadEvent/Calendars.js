@@ -24,10 +24,10 @@ const Calendars = ({ name, timeTZ, timeLocal }) => {
         return s;
     }
 
-    function toTimestamp(strDate){
+    function toTimestamp(strDate) {
         var datum = Date.parse(strDate);
-        return datum/1000;
-     }
+        return datum / 1000;
+    }
 
     useEffect(() => {
         console.log(1)
@@ -37,15 +37,16 @@ const Calendars = ({ name, timeTZ, timeLocal }) => {
             /*global showNotification, TimestampTrigger*/
             /*eslint no-undef: "error"*/
             const requestServices = async () => {
-                 
+
+                alert('Notificación Activa');
 
                 if ("showTrigger" in Notification.prototype) {
                     /* Notification Triggers supported */
                     console.log('Notification Triggers supported')
                 }
-                 ;
+                ;
                 const reg = await sw.getRegistration();
-                console.log('timeTZ',timeTZ)
+                console.log('timeTZ', timeTZ)
 
 
                 Notification.requestPermission().then(permission => {
@@ -53,13 +54,13 @@ const Calendars = ({ name, timeTZ, timeLocal }) => {
                         alert('you need to allow push notifications');
                     } else {
                         //const timestamp = new Date().getTime() + 10 * 1000;
-                        const timestamp  =   new Date(timeTZ).getTime() 
-                        console.log('timeTZ',timeTZ)
-                        console.log('timestap que le pego', new Date(timeTZ).getTime() )
+                        const timestamp = new Date(timeTZ).getTime()
+                        console.log('timeTZ', timeTZ)
+                        console.log('timestap que le pego', new Date(timeTZ).getTime())
 
                         console.log(new Date().getTime())
 
-                        console.log('new Date(eventTZ)',toTimestamp(timeTZ) )
+                        console.log('new Date(eventTZ)', toTimestamp(timeTZ))
                         //timestamp || Calcular cuanto falta de aquí a que termine el evento.
                         const scheduledTime = new Date(timestamp);
                         console.log('timeLocal', timeLocal)
@@ -72,7 +73,7 @@ const Calendars = ({ name, timeTZ, timeLocal }) => {
                                 'Scheduled Push Notification',
                                 {
                                     tag: timestamp, // a unique ID
-                                    body: 'El evento '+name+' Comienza en 5 minutos !', // content of the push notification
+                                    body: 'El evento ' + name + ' Comienza en 5 minutos !', // content of the push notification
                                     showTrigger: new TimestampTrigger(timestamp), // set the time for the push notification
                                     data: {
                                         url: window.location.href, // pass the current url to the notification
@@ -84,7 +85,7 @@ const Calendars = ({ name, timeTZ, timeLocal }) => {
                                 'Scheduled Push Notification',
                                 {
                                     tag: timestamp, // a unique ID
-                                    body: 'El evento '+name+' Comienza en 5 minutos !', // content of the push notification
+                                    body: 'El evento ' + name + ' Comienza en 5 minutos !', // content of the push notification
                                     timestamp: timestamp, // set the time for the push notification
                                     data: {
                                         url: window.location.href, // pass the current url to the notification
@@ -106,40 +107,43 @@ const Calendars = ({ name, timeTZ, timeLocal }) => {
         <div className="calendars">
             <p>También, recuerdame</p>
             <ul>
-                <li style={{cursor:'pointer'}} onClick={() => openCalendar(google(event))}>
+                <li style={{ cursor: 'pointer' }} onClick={() => openCalendar(google(event))}>
                     <div className="ic google"></div>
                     <div className="info">
                         <span>Calendar</span>
                         <h4>Google</h4>
                     </div>
                 </li>
-                <li style={{cursor:'pointer'}}  onClick={() => openCalendar(ics(event))}>
+                <li style={{ cursor: 'pointer' }} onClick={() => openCalendar(ics(event))}>
                     <div className="ic apple"></div>
                     <div className="info">
                         <span>Calendar</span>
                         <h4>Apple</h4>
                     </div>
                 </li>
-                <li style={{cursor:'pointer'}}  onClick={() => openCalendar(outlook(event))}>
+                <li style={{ cursor: 'pointer' }} onClick={() => openCalendar(outlook(event))}>
                     <div className="ic outlook"></div>
                     <div className="info">
                         <span>Calendar</span>
                         <h4>Outlook</h4>
                     </div>
                 </li>
+                {bowseer.getBrowser().name == "Chrome" &&
+                    <li style={{ cursor: 'pointer' }} onClick={() => setBrowser(true)}>
+                        <div className="ic browser"></div>
+                        <div className="info">
+                            <span>Notificación</span>
+                            <h4>Chrome</h4>
+                        </div>
+                    </li>}
+
             </ul>
 
-            { bowseer.getBrowser().name == "Chrome" && <div className="browser" onClick={() => setBrowser(true)}>
-                <p style={{cursor:'pointer'}} >Nah! prefiero en mi navegador</p>
-                <div style={{cursor:'pointer'}}  className="ic chrome"></div>
-            </div>}
-
-
-            {/*
+                {/*
               <p className="cright">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit a ipsum quod eveniet excepturi.</p>
             */}
         </div>
     )
 }
 
-export { Calendars }
+export { Calendars}

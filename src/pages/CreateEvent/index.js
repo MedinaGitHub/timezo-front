@@ -12,7 +12,6 @@ export default function CreateEvent() {
 
     return (
         <main>
-            <Logo />
             <Signup valueOpen={value} openModalSet={openModalSet} />
             <Header openModalSet={openModalSet} />
             <Form openModalSet={openModalSet} />

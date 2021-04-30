@@ -47,7 +47,6 @@ export default function ReadEvent() {
     }, [id_owner, id_counter])
     return (
         <>
-            <Logo />
             <main>
                 {event_data && <>
                     <PicSide link_event={event_data._link_event} picture={event_data._picture_event} />

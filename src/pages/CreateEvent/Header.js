@@ -10,9 +10,12 @@ import Select from '@material-ui/core/Select';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import { authLogout } from '../../reducer/auth';
+import { useLocation, Link } from 'react-router-dom';
 
 const Header = ({ openModalSet }) => {
 
+    const location = useLocation();
+    console.log('location.pathname',location.pathname);
     const dispatch = useDispatch();
     const isAuth = useSelector(({ auth }) => auth.token !== null && typeof auth.token !== 'undefined' && auth.email != null);
     console.log('isAuth', isAuth)
@@ -40,23 +43,27 @@ const Header = ({ openModalSet }) => {
         <>
             <header>
                 {!isAuth &&
-                    <div class="menu">
-                        <div class="timezone cursorzone" onClick={() => openModalSet(true)}>
-                            <div className="zone">
-                                <a  >Registrar</a>
-                            </div>
+                    <>
+                        <div class="logo">
+                            <div class="country"></div>
                         </div>
-                        <Signin />
-                        { /*<a href="" class="menu__expand"></a> */}
-
-                    </div>
+                        <div class="menu">
+                            <div class="timezone cursorzone" onClick={() => openModalSet(true)}>
+                                <div className="zone">
+                                    <a  >REGISTRAR</a>
+                                </div>
+                            </div>
+                            <Signin />
+                            { /*<a href="" class="menu__expand"></a> */}
+                        </div>
+                    </>
                 }
                 {
                     isAuth &&
                     <div class="menu">
 
                         <nav>
-                            <a href=""></a>
+                        {location.pathname !== '/' &&  <Link to="/">Crear Evento</Link>}  
                             <a href="">{auth.nick_name}</a>
                             <Button className={'menu__expand'} onClick={handleOpen}>
                             </Button>

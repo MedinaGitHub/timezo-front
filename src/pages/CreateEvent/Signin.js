@@ -12,7 +12,7 @@ import GoogleLogin from 'react-google-login';
 import axios from '../../utils/axios';
 import TextField from '@material-ui/core/TextField';
 import { useSelector, useDispatch } from 'react-redux';
-
+import { useLocation, Link } from 'react-router-dom';
 import { authGoogleSignIN } from '../../reducer/auth';
 
 const styles = (theme) => ({
@@ -58,7 +58,8 @@ const DialogActions = withStyles((theme) => ({
 const Signin = () => {
     const [open, setOpen] = React.useState(false);
     const dispatch = useDispatch();
-
+    const location = useLocation();
+    console.log('location.pathname',location.pathname);
     const auth = useSelector(({ auth }) => auth);
 
     const responseGoogle = async (response) => {
@@ -83,9 +84,9 @@ const Signin = () => {
     return (
         <>
 
-            <nav class="cursorzone" onClick={handleClickOpen}>
-                <a >Crear</a>
-                <a >Ingresar</a>
+            <nav class="cursorzone" >
+                {location.pathname !== '/' &&  <Link to="/">Crear Evento</Link>}  
+                <a class="menu__hl" onClick={handleClickOpen}>Ingresar</a>
 
             </nav>
             <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
