@@ -17,15 +17,10 @@ import Avatar from '@material-ui/core/Avatar';
 const Header = ({ openModalSet }) => {
 
     const location = useLocation();
-    console.log('location.pathname', location.pathname);
     const dispatch = useDispatch();
     const isAuth = useSelector(({ auth }) => auth.token !== null && typeof auth.token !== 'undefined' && auth.email != null);
-    console.log('isAuth', isAuth)
     const auth = useSelector(({ auth }) => auth);
-    console.log('isauthauthauthauthAuth', auth)
-
     const [open, setOpen] = React.useState(false);
-    console.log('auth', auth)
     const handleOpen = () => {
         setOpen(true);
     };
@@ -73,7 +68,6 @@ const Header = ({ openModalSet }) => {
                                 <Button className={'menu__expand'} onClick={handleOpen}>
                              {/*auth.nick_name*/}
                                  <Avatar alt="Remy Sharp" src={auth.picture} /> 
-                           {console.log('auth',auth)}
                                 </Button>
                                 <div className="hola">
                                     <FormControl className={'select-header'}>

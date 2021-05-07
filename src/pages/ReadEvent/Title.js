@@ -4,7 +4,6 @@ const TItle = ({ picture, name, description, categories, nick_name }) => {
         <>
             <div className="event__title">
                 <div className="category">
-                    {console.log('categories', categories)}
                     {categories.map(data => <span id={`span_${data}`}> {data} </span>)}
                 </div>
                 <div className="title">{name}</div>
@@ -15,8 +14,6 @@ const TItle = ({ picture, name, description, categories, nick_name }) => {
                     data-title={'Asiste al evento ' + name + ', revisa en este Link los detalles'}
                     data-media={picture}
                     className="addthis_inline_share_toolbox_3fk0 addthismargin"></div>
-
-
             </div>
         </>
     )

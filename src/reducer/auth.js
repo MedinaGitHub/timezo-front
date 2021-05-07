@@ -192,7 +192,6 @@ export const signup = (userData) => {
       })
       .catch((err) => {
         if (err) {
-           ;
           console.log('salto el medio error', err)
           dispatch(authFail(err));
         }

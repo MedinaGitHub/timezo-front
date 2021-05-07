@@ -1,6 +1,5 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
 import MuiDialogContent from '@material-ui/core/DialogContent';
@@ -9,8 +8,6 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
 import GoogleLogin from 'react-google-login';
-import axios from '../../utils/axios';
-import TextField from '@material-ui/core/TextField';
 import { useSelector, useDispatch } from 'react-redux';
 import { useLocation, Link } from 'react-router-dom';
 import { authGoogleSignIN } from '../../reducer/auth';
@@ -59,18 +56,11 @@ const Signin = () => {
     const [open, setOpen] = React.useState(false);
     const dispatch = useDispatch();
     const location = useLocation();
-    console.log('location.pathname',location.pathname);
     const auth = useSelector(({ auth }) => auth);
 
     const responseGoogle = async (response) => {
-         
         if (response.profileObj) {
-            //pegarle a la API
-            //   const token = await axios.post('api/auth/google', { data: response, nickname: value });
-
             dispatch(authGoogleSignIN({ data: response }));
-             ;
-            // console.log('token', token)
         }
     };
     const handleClickOpen = () => {
@@ -83,7 +73,6 @@ const Signin = () => {
 
     return (
         <>
-
             <nav class="cursorzone" >
                 {location.pathname !== '/' &&  <Link to="/">Crear Evento</Link>}  
                 <a class="menu__hl" onClick={handleClickOpen}>Ingresar</a>

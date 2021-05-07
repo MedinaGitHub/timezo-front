@@ -2,7 +2,6 @@ import React, { Component, useEffect, useState } from 'react'
 import { google, outlook, office365, yahoo, ics } from "calendar-link";
 import Bowser from "bowser";
 
-
 const Calendars = ({ name, timeTZ, timeLocal }) => {
 
     const [browser, setBrowser] = useState()
@@ -30,10 +29,7 @@ const Calendars = ({ name, timeTZ, timeLocal }) => {
     }
 
     useEffect(() => {
-        console.log(1)
-        console.log('sw', sw)
         if (sw && browser == true) {
-            console.log(2)
             /*global showNotification, TimestampTrigger*/
             /*eslint no-undef: "error"*/
             const requestServices = async () => {
@@ -44,30 +40,16 @@ const Calendars = ({ name, timeTZ, timeLocal }) => {
                     /* Notification Triggers supported */
                     console.log('Notification Triggers supported')
                 }
-                ;
+                
                 const reg = await sw.getRegistration();
-                console.log('timeTZ', timeTZ)
-
-
                 Notification.requestPermission().then(permission => {
                     if (permission !== 'granted') {
                         alert('you need to allow push notifications');
                     } else {
                         //const timestamp = new Date().getTime() + 10 * 1000;
                         const timestamp = new Date(timeTZ).getTime()
-                        console.log('timeTZ', timeTZ)
-                        console.log('timestap que le pego', new Date(timeTZ).getTime())
-
-                        console.log(new Date().getTime())
-
-                        console.log('new Date(eventTZ)', toTimestamp(timeTZ))
                         //timestamp || Calcular cuanto falta de aquí a que termine el evento.
                         const scheduledTime = new Date(timestamp);
-                        console.log('timeLocal', timeLocal)
-
-
-                        console.log(bowseer.getBrowser());
-
                         if (bowseer.getBrowser().name == "Chrome") { //TODO: REVIEW VERSION > 80
                             reg.showNotification(
                                 'Scheduled Push Notification',
@@ -95,8 +77,6 @@ const Calendars = ({ name, timeTZ, timeLocal }) => {
                         }
                     }
                 });
-
-
             }
             requestServices();
 

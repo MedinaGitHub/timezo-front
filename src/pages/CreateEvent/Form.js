@@ -115,7 +115,6 @@ const Form = ({ openModalSet, changeGoalTimeSet }) => {
             token_recaptcha = await reRef.current.executeAsync();
             setCaptcha(token_recaptcha)
         }
-        debugger
         var bodyFormData = new FormData();
         bodyFormData.append('token_recaptcha', captcha ? captcha : token_recaptcha);
         bodyFormData.append('_name', data._name);

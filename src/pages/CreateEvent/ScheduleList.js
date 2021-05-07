@@ -1,17 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import { withStyles } from '@material-ui/core/styles';
 import citiesUnicode from './myCities';
 import moment from 'moment';
 import momentTimezone from 'moment-timezone';
-import TextareaAutosize from '@material-ui/core/TextareaAutosize';
-import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import FileCopy from '@material-ui/icons/FileCopy';
 
-
-console.log('citiesUnicode', citiesUnicode)
 const PurpleCheckbox = withStyles({
     root: {
         color: "#8266E2",
@@ -21,25 +16,6 @@ const PurpleCheckbox = withStyles({
     },
     checked: {},
 })((props) => <Checkbox color="default" {...props} />);
-
-/*
- {
-   '15:00': {unicodes  [🇨🇴 ,🇵🇪 ,🇲🇽]},
-   '14:00': {unicodes: [🇨🇴 ,🇵🇪 ,🇲🇽]},
- }
- o
- [
-     { "schedule": '15:00', "unicodes":  [🇨🇴 ,🇵🇪 ,🇲🇽] },
-     { "schedule": '14:00', "unicodes":  [🇨🇴 ,🇵🇪 ,🇲🇽] },
- ]
-*/
-
-const txtCountries = (countries) => {
-    return (
-        <>
-        </>
-    )
-}
 
 const calculateTimeZones = (cities, goal_time = moment().toDate()) => {
     const goal_tz = momentTimezone(goal_time);
@@ -63,9 +39,7 @@ const ScheduleList = ({ goal_time }) => {
 
     useEffect(() => {
         if (goal_time) {
-            console.log('this.props', goal_time)
             var result = calculateTimeZones(citiesUnicode, goal_time);
-            console.log('result', Object.entries(result));
             const listSchedulesCities = Object.entries(result);
             setlistSchedule(listSchedulesCities)
             const resultTxt = listSchedulesCities.reduce((acumulator, cities) => {
@@ -84,7 +58,6 @@ const ScheduleList = ({ goal_time }) => {
 
                     <div className="date__cont">
                         <h5 >Seleccione Fecha & hora para recalcular</h5>
-
                     </div>
 
                 </div>
@@ -163,11 +136,3 @@ const ScheduleBody = ({ goal_time }) => {
 }
 
 export { ScheduleList, ScheduleBody }
-
-/*
-Manera de trabajar
-
-json de ciudades, algunas por defecto, otras secundarias.Check
-Usar moment.io para poder obtener el horario, el horario actual viene de arriba.
-
-*/

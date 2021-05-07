@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
 import MuiDialogContent from '@material-ui/core/DialogContent';
@@ -9,7 +8,6 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
 import GoogleLogin from 'react-google-login';
-import axios from '../../utils/axios';
 import TextField from '@material-ui/core/TextField';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -79,12 +77,10 @@ const Signup = ({ valueOpen = false, openModalSet }) => {
 
     useEffect(() => {
         console.log('ocurrio un erroor', auth.error)
-
     }, [auth.error])
 
     useEffect(() => {
         if(auth.token && auth.email){
-
             openModalSet(false)
         }
     }, [auth.token])
