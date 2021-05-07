@@ -33,6 +33,12 @@ export default function ReadEvent() {
         //second: "numeric",       // numeric or 2-digit
         //timeZoneName: "short",   // short or long
     };
+    const optionsTimeWeekly =
+    {
+        weekday: "long",        // narrow, short, or long
+        hour: "numeric",         // numeric or 2-digit
+        minute: "numeric",       // numeric or 2-digit
+    };
 
 
     useEffect(() => {
@@ -40,7 +46,8 @@ export default function ReadEvent() {
             const procedure = await axios.get(`/api/events/${id_counter}/${id_owner}`);
             const localDate = parseISO(procedure.data[0]._event_time);
             procedure.data[0].time_local = localDate.toLocaleString(undefined, optionsTime)
-                ;
+            procedure.data[0].time_weekly = localDate.toLocaleString(undefined, optionsTimeWeekly)
+                
             setEvent_data(procedure.data[0])
         }
         getProcedure()
@@ -65,7 +72,7 @@ export default function ReadEvent() {
                                   categories={event_data._categories} 
                                   nick_name={event_data._nick_name}
                                   />
-                                <TimeEvent time={event_data.time_local} />
+                                <TimeEvent time={event_data.time_local} weekly={event_data._weekly} weeklyTime={event_data.time_weekly} />
                                 <LetMeKnow />
                                 <Calendars name={event_data._name} timeTZ={event_data._event_time} timeLocal={event_data.time_local} />
                             </>}

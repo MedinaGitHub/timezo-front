@@ -73,7 +73,7 @@ const Calendars = ({ name, timeTZ, timeLocal }) => {
                                 'Scheduled Push Notification',
                                 {
                                     tag: timestamp, // a unique ID
-                                    body: 'El evento ' + name + ' Comienza en 5 minutos !', // content of the push notification
+                                    body: 'El evento ' + name + ' comenzará pronto !', // content of the push notification
                                     showTrigger: new TimestampTrigger(timestamp), // set the time for the push notification
                                     data: {
                                         url: window.location.href, // pass the current url to the notification
@@ -85,7 +85,7 @@ const Calendars = ({ name, timeTZ, timeLocal }) => {
                                 'Scheduled Push Notification',
                                 {
                                     tag: timestamp, // a unique ID
-                                    body: 'El evento ' + name + ' Comienza en 5 minutos !', // content of the push notification
+                                    body: 'El evento ' + name + ' comenzará pronto ! !', // content of the push notification
                                     timestamp: timestamp, // set the time for the push notification
                                     data: {
                                         url: window.location.href, // pass the current url to the notification

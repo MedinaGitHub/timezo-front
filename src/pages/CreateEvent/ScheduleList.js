@@ -58,9 +58,7 @@ const calculateTimeZones = (cities, goal_time = moment().toDate()) => {
 
 const ScheduleList = ({ goal_time }) => {
 
-
     const [listSchedule, setlistSchedule] = useState([])
-
     const [listScheduleTxt, setlistScheduleTxt] = useState('')
 
     useEffect(() => {
@@ -92,12 +90,11 @@ const ScheduleList = ({ goal_time }) => {
                 </div>
                 <div className="body">
                     <div className="order">
-                        <div className="ic"></div>
-                        <span>Idioma</span>
+                        {/* <div className="ic"></div>
+                        <span>Idioma</span>*/}
                     </div>
 
                     <div className="result">
-
                         <table>
                             {listSchedule.map((cities) => (
                                 <>
@@ -112,18 +109,6 @@ const ScheduleList = ({ goal_time }) => {
 
                                 </>
                             ))}
-                            { /*
-                            <TextField
-                                id="outlined-multiline-static"
-                                label="Horarios"
-                                multiline
-                                rows={6}
-                                style={{width:250, backgroundColor:'#fff',marginTop:10}}
-                                defaultValue=""
-                                variant="outlined"
-                                value={listScheduleTxt}
-                            />
-                            */}
                             <Button
                                 variant="contained"
                                 style={{ backgroundColor: '#8266e2', color: '#fff', marginTop: 17 }}
@@ -132,8 +117,6 @@ const ScheduleList = ({ goal_time }) => {
                             >
                                 <span> Copy</span>
                             </Button>
-
-
                         </table>
                     </div>
                 </div>
@@ -143,7 +126,43 @@ const ScheduleList = ({ goal_time }) => {
     )
 }
 
-export { ScheduleList }
+const ScheduleBody = ({ goal_time }) => {
+
+    const [listSchedule, setlistSchedule] = useState([])
+
+    useEffect(() => {
+        if (goal_time) {
+            var result = calculateTimeZones(citiesUnicode, goal_time);
+            const listSchedulesCities = Object.entries(result);
+            setlistSchedule(listSchedulesCities)
+        }
+    }, [goal_time])
+
+    return (
+        <>
+                <div>  
+                    <div >
+                        <table style={{width: '-webkit-fill-available'}}>
+                            {listSchedule.map((cities) => (
+                                <>
+                                    <tr>
+                                        <th style={{ paddingLeft: 10, textAlign: 'center' }}>
+                                            {cities[0]}
+                                        </th>
+                                        <th style={{ paddingLeft: 10, textAlign: 'left' }}>
+                                            {cities[1].unicode}
+                                        </th>
+                                    </tr>
+                                </>
+                            ))} 
+                        </table>
+                    </div>
+                </div>
+        </>
+    )
+}
+
+export { ScheduleList, ScheduleBody }
 
 /*
 Manera de trabajar

@@ -21,6 +21,8 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Checkbox from '@material-ui/core/Checkbox';
 import { LensTwoTone } from '@material-ui/icons';
+import { ScheduleBody } from './ScheduleList';
+import moment from 'moment';
 
 const PurpleCheckbox = withStyles({
     root: {
@@ -38,6 +40,7 @@ const Form = ({ openModalSet, changeGoalTimeSet }) => {
 
     const history = useHistory();
     const auth = useSelector(({ auth }) => auth);
+    const isAuth = useSelector(({ auth }) => auth.token !== null && typeof auth.token !== 'undefined' && auth.email != null);
     const [valueAutocomplete, setValueAutocomplete] = React.useState([]);
     const [selectedDate, handleDateChange] = useState(null);
     const [captcha, setCaptcha] = useState(null);
@@ -49,6 +52,7 @@ const Form = ({ openModalSet, changeGoalTimeSet }) => {
 
     const [checkBoxes, setCheckBoxes] = React.useState({
         createAccount: false,
+        weekly: false,
     });
 
     const handleChangeChecks = (event) => {
@@ -111,6 +115,7 @@ const Form = ({ openModalSet, changeGoalTimeSet }) => {
             token_recaptcha = await reRef.current.executeAsync();
             setCaptcha(token_recaptcha)
         }
+        debugger
         var bodyFormData = new FormData();
         bodyFormData.append('token_recaptcha', captcha ? captcha : token_recaptcha);
         bodyFormData.append('_name', data._name);
@@ -118,6 +123,7 @@ const Form = ({ openModalSet, changeGoalTimeSet }) => {
         bodyFormData.append('_categories', JSON.stringify(valueAutocomplete));
         bodyFormData.append('_event_time', selectedDate);
         bodyFormData.append('_link_event', data._link_event);
+        bodyFormData.append('_weekly', checkBoxes.weekly);
         bodyFormData.append('galleryImage', data._picture[0]);
         setBodyFormData(bodyFormData)// ejecuta el useEffect
 
@@ -223,16 +229,40 @@ const Form = ({ openModalSet, changeGoalTimeSet }) => {
                             <span>Link evento</span>
                         </div>
 
+
+                        <div class="form--input">
+                            <div class="country__date">
+
+
+                                <div class="country--main">
+                                    <div class="hour">Cambie fecha & hora para recalcular</div>
+                                </div>
+                                <ScheduleBody goal_time={selectedDate || moment().toDate()} />
+                            </div>
+                        </div>
+
                         <div className="bottom__form">
+
+                            {!isAuth &&
+                                <FormControlLabel
+                                    control={
+                                        <PurpleCheckbox
+                                            checked={checkBoxes.createAccount}
+                                            onChange={handleChangeChecks} name="createAccount"
+                                        />
+                                    }
+                                    label="Quiero registrarme para gestionar mis eventos"
+                                />
+                            }
 
                             <FormControlLabel
                                 control={
                                     <PurpleCheckbox
-                                        checked={checkBoxes.createAccount}
-                                        onChange={handleChangeChecks} name="createAccount"
+                                        checked={checkBoxes.weekly}
+                                        onChange={handleChangeChecks} name="weekly"
                                     />
                                 }
-                                label="Quiero registrarme para gestionar mis eventos"
+                                label="Este evento es todas las semanas"
                             />
 
                             {/* 

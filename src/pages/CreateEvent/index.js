@@ -10,7 +10,7 @@ import moment from 'moment';
 
 export default function CreateEvent() {
     const [value, setValue] = useState(false);
-    const [goal_time, setVGoalTime] = useState( moment().toDate() );
+    const [goal_time, setVGoalTime] = useState(moment().toDate());
     const openModalSet = (val) => { setValue(val) }
     const changeGoalTimeSet = (val) => { setVGoalTime(val) }
 
@@ -19,10 +19,16 @@ export default function CreateEvent() {
         <main>
             <Signup valueOpen={value} openModalSet={openModalSet} />
             <Header openModalSet={openModalSet} />
-            <Form openModalSet={openModalSet} changeGoalTimeSet={changeGoalTimeSet}/>
-            <ScheduleList goal_time={goal_time}/>
+            <Form openModalSet={openModalSet} changeGoalTimeSet={changeGoalTimeSet} />
+            <ScheduleList goal_time={goal_time} />
             <div class="bg__full"></div>
-            <div> <Link className={'link-conditions'} to="/terms_and_Conditions">Terms And Conditions</Link> <Link className={'link-privacity'} to="/privacy_policy">Privacy Policy</Link>  </div>
+            <div>
+                <ul className='list-footer'>
+                    <li> <span >contacto@labsinnova.cl</span> </li>
+                    <li> <Link to="/terms_and_Conditions">Terms And Conditions</Link></li>
+                    <li><Link to="/privacy_policy">Privacy Policy</Link> </li>
+                </ul>
+            </div>
         </main>
     )
 };

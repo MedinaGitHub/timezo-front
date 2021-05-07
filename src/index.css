@@ -1096,7 +1096,7 @@ p.cright {
     position: absolute;
     height: auto;
     left: calc(400px + 7vw + 20px);
-    top: 41%;
+    top: 50%;
     transform: translate(0,-50%);
     z-index: 5;
     /* left: calc(100% + 20px); */
@@ -1925,4 +1925,30 @@ width: 100%;
     bottom: 1px;
     right: 120px;
     color: white;
+}
+
+.email-labs {
+    position: absolute;
+    bottom: 1px;
+    right: 300px;
+    color: white;
+}
+
+.MuiTypography-body1{
+    font-size: 0.9rem !important;
+}
+
+.list-footer{
+    position: absolute !important;
+    bottom: 15px;
+    right: 15px;
+    line-height: 1;
+    margin: 0;
+    display: inline-flex;
+    opacity: .7;
+    color: #fff;
+}
+
+.list-footer li {
+    padding: 10px;
 }
