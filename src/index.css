@@ -1809,7 +1809,9 @@ width: 100%;
 
 .div-link{
     text-align: -webkit-center;
-    margin: 11px;
+    margin: 6px;
+    margin-top: -24px;
+    padding: 13px;
 }
 
 .cursorzone{
