@@ -33,7 +33,7 @@ const PurpleCheckbox = withStyles({
 })((props) => <Checkbox color="default" {...props} />);
 
 
-const Form = ({ openModalSet }) => {
+const Form = ({ openModalSet, changeGoalTimeSet }) => {
     const { register, errors, handleSubmit } = useForm();
 
     const history = useHistory();
@@ -98,6 +98,10 @@ const Form = ({ openModalSet }) => {
         }
     }, [auth.token])
 
+    useEffect(() => {
+        changeGoalTimeSet(selectedDate)
+    }, [selectedDate])
+
 
     const onSubmit = async (data, e) => {
         setError(null)
@@ -133,7 +137,7 @@ const Form = ({ openModalSet }) => {
                 <div className="form__event">
                     <div className="cont__form">
                         <div className="form--input">
-                            <input  type="text" autocomplete="off" className="normal" placeholder="Nombre Evento" minlength="2" maxlength="150" required
+                            <input type="text" autocomplete="off" className="normal" placeholder="Nombre Evento" minlength="2" maxlength="150" required
                                 name="_name"
                                 ref={
                                     register({
@@ -144,7 +148,7 @@ const Form = ({ openModalSet }) => {
                         </div>
 
                         <div className="form--input optional">
-                            <input  type="text" autocomplete="off" className="normal" placeholder="Descripción" minlength="0" maxlength="1000"
+                            <input type="text" autocomplete="off" className="normal" placeholder="Descripción" minlength="0" maxlength="1000"
                                 name="_description"
                                 ref={
                                     register({
@@ -210,7 +214,7 @@ const Form = ({ openModalSet }) => {
                         </div>
 
                         <div className="form--input">
-                            <input  autocomplete="off" name="_link_event" type="text" className="normal" placeholder="Link Evento"
+                            <input autocomplete="off" name="_link_event" type="text" className="normal" placeholder="Link Evento"
                                 ref={
                                     register({
                                         required: { value: true, message: 'Ingrese la imágen del evento' }

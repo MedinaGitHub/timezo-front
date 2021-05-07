@@ -1,0 +1,276 @@
+@media screen and (max-width: 480px) {
+    
+    body {
+        overflow-x: hidden;
+      }
+      
+      header {
+          width: calc(100% - 40px);
+          height: 50px;
+          right: 20px;
+          top: -51px;
+      }
+      
+      header .logo .country{
+          right: 10px;
+      }
+      
+      header .menu__create,
+      header .menu__reg{
+          display: none;
+      }
+      
+      header .menu__expand{
+          display: block;
+      }
+      
+      
+      /* header nav a.menu__hl, */
+      /* header nav a.menu__reg{
+        display: none;
+      } */
+      
+      
+      body.event main {
+          position: relative;
+      }
+      
+      body.event main .pic__event {
+          width: 100%;
+          height: 55vh;
+          position: relative;
+          overflow: visible;
+          margin-top: 83px;
+      }
+      
+      body.event main .pic__event .original .link a.link--home{
+        display: none;
+      }
+      
+      body.event main .pic__event .original img{
+        max-height: none;
+      }
+      
+      body.event main .pic__event .blurred{
+        filter: blur(50px) brightness(120%) contrast(150%) saturate(150%);
+      }
+      
+      body.event main .box__info {
+          width: 100%;
+          padding-top: 25px;
+          position: relative;
+          height: auto;
+      }
+      
+      .box__event .event__title {
+          font-size: 1.6rem;
+      }
+      
+      .box__event .event__title .title {
+          font-size: 1.2em;
+      }
+      
+      .box__event .event__title .info {
+          line-height: 1.6;
+      }
+      
+      body.event main .pic__event .original {
+          top: calc(40px);
+          transform: translate(-50%, 0);
+          z-index: 5;
+          display: flex;
+          max-width: 90vw;
+          height: 80%;
+      }
+      
+      .date__event {
+          font-size: .7rem;
+          margin: 50px auto 20px auto;
+      }
+      
+      .addthis_inline_share_toolbox {
+          display: none;
+      }
+      
+      .calendars ul {
+          width: 100%;
+      }
+      
+      .calendars ul li {
+          padding: 12px;
+          width: calc(100% / 2 - 5px);
+          margin-bottom: 10px;
+      }
+      
+      .calendars ul li .ic {
+          width: 35px;
+          height: 35px;
+          margin: 0 7px 0 0;
+      }
+      
+      .calendars ul li .info span {
+          font-size: 11px;
+      }
+      
+      .calendars ul li .info h4 {
+          font-size: 15px;
+      }
+      
+      
+      /*** crear ***/
+      
+      body.event main{
+          position: relative;
+          height: auto;
+          padding-bottom: 20px;
+      }
+      
+      .form__event{
+          position: relative;
+          width: calc(100% - 40px);
+          left: 20px;
+          min-width: auto;
+          top: 100px; 
+          margin-top: 100px;
+          transform: translate(0,0);
+      }
+      
+      .bg__full{
+          position: fixed;
+          height: 100vh;
+      }
+      
+      p.cright{
+          width: 80%;
+          position: relative;
+          margin: 40px auto 0 auto;
+          text-align: center;
+      }
+      
+      
+      
+      /*** login ***/
+      
+      .login__box{
+          width: calc(100% - 40px);
+          padding-left: 30px;
+          padding-right: 30px;
+      }
+      
+      
+      /*** horarios crear ***/
+      
+      .country__date{
+          display: block;
+          width: 100%;
+          height: auto;
+          padding-bottom: 20px;
+      }
+      
+      .country__date .edit{
+          position: absolute;
+          right: 10px;
+          top: 10px;
+          color: var(--c__main-dark);
+          font-size: 12px;
+          line-height: 12px;
+          font-weight: bold;
+          padding: 5px 5px 5px 20px;
+          background: url(./img/edit.svg) no-repeat 0 50%/16px;
+      }
+      
+      .country__date .country--main{
+          display: flex;
+          justify-content: center;
+          padding: 20px 0 20px 0;
+      }
+      
+      .country__date .country--main .flag{
+          width: 30px;
+          height: 20px;
+          background:#ccc;
+          margin: 0 5px 0 0;
+      }
+      
+      
+      .country__date .country--main .hour{
+          font-size: .85em;
+      }
+      
+      .country__date ul{
+          width: 80%;
+          margin: 0 auto;
+          display: flex;
+          flex-wrap: wrap;
+      }
+      
+      .country__date ul li{
+          display: flex; 
+          width: calc(25% - 10px);
+          margin: 0 10px 10px 0;
+      }
+      
+      .country__date ul li:nth-last-child(1){
+          border-radius: 10px;
+          background-color: var(--c__main);
+          color: #fff;
+          font-weight: bold;
+          width: 30px;
+          font-size: .85em;
+          text-align: center;
+          padding: 2px 0;
+      }
+      
+      .country__date ul li .flag{
+          width: 20px;
+          height: 16px;
+          background-color: #ccc;
+          margin: 0 5px 0 0;
+          
+      }
+      
+      .country__date ul li .hour{
+          width: 38px;
+          font-size: .75em;
+          line-height: 16px;
+      
+      }
+      
+      body.modal{
+          overflow: hidden;
+      }
+      
+      body.modal .date--box__extra .body{
+          height: 60vh;
+      }
+      
+      .date--box__extra{
+          display: none;
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          z-index: 60;
+          transform: translate(-50%,-50%);
+      }
+      
+      body.modal .date--box__extra{
+          display: block;
+      }
+      
+      body.event .shadow{
+          pointer-events: none;
+      }
+      
+      body.modal .shadow{
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          background: rgba(0,0,0,0.3);
+          z-index: 50;
+          pointer-events: all;
+      }
+      
+    }
+    

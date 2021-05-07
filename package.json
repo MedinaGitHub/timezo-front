@@ -16,6 +16,8 @@
     "calendar-link": "^2.0.6",
     "date-fns": "^2.16.1",
     "ga-4-react": "^0.1.271",
+    "moment": "^2.29.1",
+    "moment-timezone": "^0.5.33",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-ga": "^3.3.0",

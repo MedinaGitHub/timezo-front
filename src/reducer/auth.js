@@ -28,13 +28,14 @@ export const checkStateAuth = () => {
   };
 };
 
-export const authSuccess = (token, email, name, nick_name) => {
+export const authSuccess = (token, email, name, nick_name, picture) => {
   return {
     type: AUTH_SUCCESS,
     token: token,
     email,
     name,
-    nick_name
+    nick_name,
+    picture
   };
 };
 
@@ -103,6 +104,7 @@ export const authCheckState = () => {
               response.data.email,
               response.data.name,
               response.data.nick_name,
+              response.data.picture
             )
           );
           dispatch(updateToken(token));
@@ -136,6 +138,7 @@ export const updateToken = (token) => {
     localStorage.setItem('email', data.email);
     localStorage.setItem('name', data.name);
     localStorage.setItem('nick_name', data.nick_name);
+    localStorage.setItem('picture', data.picture);
 };
 
 export const signin = (userData) => {
@@ -229,6 +232,7 @@ export const authGoogle = (googleData) => {
               response.data.email,
               response.data.name,
               response.data.nick_name,
+              response.data.picture
             )
           );
        //   updateLocalStorage(response.data)
@@ -261,6 +265,7 @@ export const authGoogleSignIN = (googleData) => {
               response.data.email,
               response.data.name,
               response.data.nick_name,
+              response.data.picture
             )
           );
         //  updateLocalStorage(response.data)
@@ -295,8 +300,8 @@ const reducerAuthSuccess = (state, action) => {
     email: action.email,
     name: action.name,
     surname: action.surname,
-    picture: action.picture,
     nick_name: action.nick_name,
+    picture: action.picture,
     error: null,
     loading: false
   });
@@ -336,9 +341,9 @@ export default function reducer(
     email: null,
     name: null,
     surname: null,
-    picture: null,
     error: null,
     nick_name: null,
+    picture: null,
     loading: false
   },
   action

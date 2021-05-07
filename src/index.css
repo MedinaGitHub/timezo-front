@@ -312,10 +312,7 @@ header .logo {
     align-self: center;
     background: url(./img/logo__timezo.svg) no-repeat 0 50%/contain;
 }
-/* ocultar menu burger para desktop */
-header .menu__expand{
-    display: none;
-}
+
 header .logo .country {
     position: absolute;
     right: 0px;
@@ -808,7 +805,7 @@ p.cright {
 .form__event {
     position: absolute;
     width: 25vw;
-    max-width: 700px;
+    max-width: 400px;
     min-width: 400px;
     top: 50%;
     left: 7vw;
@@ -1099,7 +1096,7 @@ p.cright {
     position: absolute;
     height: auto;
     left: calc(400px + 7vw + 20px);
-    top: 50%;
+    top: 41%;
     transform: translate(0,-50%);
     z-index: 5;
     /* left: calc(100% + 20px); */
@@ -1150,7 +1147,7 @@ p.cright {
     border-top:1px solid #ccc;  
     border-radius: 0 0 15px 15px;
     padding: 5px 20px 10px 20px;
-    height: 300px;
+    height: 200px;
     overflow-y: scroll;
 }
 .date--box__extra .body h3{

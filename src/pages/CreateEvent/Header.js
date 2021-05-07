@@ -11,11 +11,13 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import { authLogout } from '../../reducer/auth';
 import { useLocation, Link } from 'react-router-dom';
+import Avatar from '@material-ui/core/Avatar';
+
 
 const Header = ({ openModalSet }) => {
 
     const location = useLocation();
-    console.log('location.pathname',location.pathname);
+    console.log('location.pathname', location.pathname);
     const dispatch = useDispatch();
     const isAuth = useSelector(({ auth }) => auth.token !== null && typeof auth.token !== 'undefined' && auth.email != null);
     console.log('isAuth', isAuth)
@@ -60,31 +62,38 @@ const Header = ({ openModalSet }) => {
                 }
                 {
                     isAuth &&
-                    <div class="menu">
+                    <>
+                        <div class="logo">
+                            <div class="country"></div>
+                        </div>
+                        <div className="menu">
+                            <nav >
+                                {location.pathname !== '/' && <Link to="/">Crear Evento</Link>}
 
-                        <nav>
-                        {location.pathname !== '/' &&  <Link to="/">Crear Evento</Link>}  
-                            <a href="">{auth.nick_name}</a>
-                            <Button className={'menu__expand'} onClick={handleOpen}>
-                            </Button>
-                            <div className="hola">
-                                <FormControl className={'select-header'}>
-                                    <Select
-                                        labelId="demo-controlled-open-select-label"
-                                        id="demo-controlled-open-select"
-                                        open={open}
-                                        onClose={handleClose}
-                                        onOpen={handleOpen}
-                                        value={''}
-                                        onChange={handleChange}
-                                    >
-                                        <MenuItem value={'channel'}><span className="style-text"> <AccountBoxIcon style={{ marginRight: '4px' }} /> Ver mi canal</span></MenuItem>
-                                        <MenuItem value={'logout'}><span className="style-text"> <ExitToAppIcon style={{ marginRight: '4px' }} />  Cerrar Sesión</span></MenuItem>
-                                    </Select>
-                                </FormControl>
-                            </div>
-                        </nav>
-                    </div>
+                                <Button className={'menu__expand'} onClick={handleOpen}>
+                             {/*auth.nick_name*/}
+                                 <Avatar alt="Remy Sharp" src={auth.picture} /> 
+                           {console.log('auth',auth)}
+                                </Button>
+                                <div className="hola">
+                                    <FormControl className={'select-header'}>
+                                        <Select
+                                            labelId="demo-controlled-open-select-label"
+                                            id="demo-controlled-open-select"
+                                            open={open}
+                                            onClose={handleClose}
+                                            onOpen={handleOpen}
+                                            value={''}
+                                            onChange={handleChange}
+                                        >
+                                         {/*   <MenuItem value={'channel'}><span className="style-text"> <AccountBoxIcon style={{ marginRight: '4px' }} /> Ver mi canal</span></MenuItem>*/}
+                                            <MenuItem value={'logout'}><span className="style-text"> <ExitToAppIcon style={{ marginRight: '4px' }} />  Cerrar Sesión</span></MenuItem>
+                                        </Select>
+                                    </FormControl>
+                                </div>
+                            </nav>
+                        </div>
+                    </>
                 }
 
             </header>

@@ -19,7 +19,7 @@ const LetMeKnow = () => {
                         <span>Gracias!</span>
                     </div>
                 </div>
-            <p className="asterisco">*le mencionaremos tu zona horaria para que lo considere</p>
+          {/* <p className="asterisco">*le mencionaremos tu zona horaria para que lo considere</p> */} 
             </div>
         </>
     )

@@ -48,16 +48,23 @@ export default function ReadEvent() {
     return (
         <>
             <main>
+            <Header />
                 {event_data && <>
                     <PicSide link_event={event_data._link_event} picture={event_data._picture_event} />
                 </>}
                 <section className="box__info">
-                    <Header />
+          
                     <div className="box__event">
                         <div className="share"></div>
                         <div className="cont__event">
                             {event_data && <>
-                                <TItle picture={event_data._picture_event} name={event_data._name} description={event_data._description} categories={event_data._categories} />
+                                <TItle 
+                                  picture={event_data._picture_event}
+                                  name={event_data._name}
+                                  description={event_data._description}
+                                  categories={event_data._categories} 
+                                  nick_name={event_data._nick_name}
+                                  />
                                 <TimeEvent time={event_data.time_local} />
                                 <LetMeKnow />
                                 <Calendars name={event_data._name} timeTZ={event_data._event_time} timeLocal={event_data.time_local} />

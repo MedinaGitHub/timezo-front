@@ -4,11 +4,17 @@
 <head>
   <meta charset="utf-8" />
   <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, user-scalable=no" />
   <meta name="theme-color" content="#000000" />
   <meta name="description" content="Web site created using create-react-app" />
   <meta http-equiv="origin-trial"
     content="AntwyR/ZDwaCvqkYdP/9+NUF1zqI8foPXc+QDP2snL+IWyRhihZkFmnNSn9xdVs92JbHaGxO9ppvnnahNr8I8gMAAABXeyJvcmlnaW4iOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJmZWF0dXJlIjoiTm90aWZpY2F0aW9uVHJpZ2dlcnMiLCJleHBpcnkiOjE2MTM1OTM0MzF9" />
+
+    
+<meta name="author" content="timezo" />
+<meta name="googlebot" content="code">
+<meta name="robots" content="index, follow">
+
   <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
   <!--
       manifest.json provides metadata used when your web app is installed on a
@@ -66,4 +72,22 @@
   }
 </script>
 
+<script>
+  var login = document.getElementsByTagName("body")[0];
+
+  function signUp() {
+    login.classList.add("signupActive");
+    login.classList.remove("signinActive");
+  }
+
+  function signIn() {
+    login.classList.add("signinActive");
+    login.classList.remove("signupActive");
+  }
+
+  function closeActions() {
+    login.classList.remove("signinActive");
+    login.classList.remove("signupActive");
+  }
+</script>
 </html>
