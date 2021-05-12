@@ -16,6 +16,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import { ScheduleBody } from './ScheduleList';
 import moment from 'moment';
+import swal from '@sweetalert/with-react'
 
 const PurpleCheckbox = withStyles({
     root: {
@@ -102,6 +103,20 @@ const Form = ({ openModalSet, changeGoalTimeSet }) => {
 
 
     const onSubmit = async (data, e) => {
+
+        debugger;
+        if (!image) {
+            swal(
+                <div>
+                    <h1>Faltó una fotito</h1>
+                    <p>
+                        Si no tienes una, dale un vistazo a <a style={{ color: '#5757f1' }} href="https://www.canva.com/" target="_blank">canva.com</a> allí puedes crear rápido una tarjeta de invitación bonita y gratis 😉
+                  </p>
+                </div>
+            )
+            return false;
+        }
+
         setError(null)
         setLoading('Cargando...')
         let token_recaptcha = null;
@@ -153,9 +168,10 @@ const Form = ({ openModalSet, changeGoalTimeSet }) => {
                                     register({
                                         required: { value: true, message: 'Ingrese la descripción del evento' }
                                     })}
+                                required
                             />
                             <span>Descripción</span>
-                            <h5>opcional</h5>
+
                         </div>
 
                         {/*<input type="text" className="normal" placeholder="Categorías" />*/}
@@ -176,8 +192,10 @@ const Form = ({ openModalSet, changeGoalTimeSet }) => {
                                 setValueAutocomplete([...newValue])
 
                             }}
-                            renderInput={(params) => (
-                                <TextField {...params} label="Categorías" placeholder="Categoria" />
+                            renderInput={(params) => (<>
+                                <h5 className='optionalForm'>opcional</h5>
+                                <TextField {...params} label="Categorías" placeholder="Tip: Inventa una categoría luego press enter" />
+                            </>
                             )}
                         />
 
@@ -190,11 +208,8 @@ const Form = ({ openModalSet, changeGoalTimeSet }) => {
                                 accept=".jpg, .jpeg, .png, .gif"
                                 placeholder="Imagen"
                                 name="_picture"
-                                ref={
-                                    register({
-                                        required: { value: true, message: 'Ingrese la imágen del evento' }
-                                    })}
-                                required />
+
+                            />
                             <label for="file-4">
                                 <h6>{image ? image[0].name : 'Imagen'}</h6>
                             </label>
@@ -213,6 +228,14 @@ const Form = ({ openModalSet, changeGoalTimeSet }) => {
                             </MuiPickersUtilsProvider>
                         </div>
 
+
+                        <div class="form--input">
+                            <div class="country__date">
+                                <ScheduleBody goal_time={selectedDate || moment().toDate()} />
+                            </div>
+                        </div>
+
+
                         <div className="form--input">
                             <input autocomplete="off" name="_link_event" type="text" className="normal" placeholder="Link Evento"
                                 ref={
@@ -223,12 +246,6 @@ const Form = ({ openModalSet, changeGoalTimeSet }) => {
                             <span>Link evento</span>
                         </div>
 
-
-                        <div class="form--input">
-                            <div class="country__date">
-                                <ScheduleBody goal_time={selectedDate || moment().toDate()} />
-                            </div>
-                        </div>
 
                         <div className="bottom__form">
 

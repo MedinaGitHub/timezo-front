@@ -4,7 +4,7 @@ import moment from 'moment';
 import momentTimezone from 'moment-timezone';
 import FileCopyOutlinedIcon from '@material-ui/icons/FileCopyOutlined';
 import Tooltip from '@material-ui/core/Tooltip';
-import {CopyToClipboard} from 'react-copy-to-clipboard';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 const calculateTimeZones = (cities, goal_time = moment().toDate()) => {
     const goal_tz = momentTimezone(goal_time);
@@ -59,16 +59,9 @@ const ScheduleBody = ({ goal_time }) => {
 
     return (
         <>
-        <div class="country--main">
-            <div class="hour">Cambie fecha & hora para recalcular 
-            
-            <CopyToClipboard text={listScheduleTxt}>
-            <Tooltip title="Copiar en portapapeles horios y banderas ">
-                <FileCopyOutlinedIcon    className='CopyFLags'/>
-            </Tooltip>
-            </CopyToClipboard>
+            <div class="country--main">
+                <div class="hour">Cambie fecha & hora para recalcular</div>
             </div>
-        </div>
             <div>
                 <div >
                     <table style={{ width: '-webkit-fill-available', marginBottom: 10 }}>
@@ -87,6 +80,12 @@ const ScheduleBody = ({ goal_time }) => {
                             </>
                         ))}
                     </table>
+
+                    <CopyToClipboard text={listScheduleTxt}>
+                        <Tooltip title="Copiar en portapapeles horios y banderas ">
+                            <FileCopyOutlinedIcon className='CopyFLags' />
+                        </Tooltip>
+                    </CopyToClipboard>
                 </div>
             </div>
         </>

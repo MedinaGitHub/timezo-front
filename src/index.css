@@ -851,6 +851,7 @@ p.cright {
 }
 
 .form__event .cont__form .form--input.half.date::after {
+    z-index: 0;
     background: url(./img/calendar.svg) no-repeat center/contain;
 }
 
@@ -1790,6 +1791,7 @@ width: 100%;
 }
 
 .seba input{
+    z-index: 1;
     margin-top: -16px;
     margin-left: 12px;
 }
@@ -1962,8 +1964,30 @@ width: 100%;
 
 .CopyFLags{
     color: rgb(130, 102, 226);
-    font-size: 24px;
-    margin-left: 31px;
-    /* margin-top: 29px; */
+    right: 14px;
     position: absolute;
+    margin-top: -42px;
+}
+
+.swal-button{
+    background-color:var(--c__main);
+}
+
+.optionalForm{
+    right: 15px;
+    position: absolute;
+    margin-top: 3px;
+}
+
+#myMenuButton span{
+    display: flex;
+    font-size: 11px;
+    text-transform: uppercase;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+    font-weight: 00;
+    letter-spacing: 0.5px;
+    font-family: var(--f__montserrat);
+    color: #666;
 }

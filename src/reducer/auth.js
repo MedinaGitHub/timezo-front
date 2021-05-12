@@ -125,7 +125,6 @@ export const updToken = (token) => {
 
 export const updateToken = (token) => {
   return (dispatch) => {
-     
     localStorage.setItem('token', token);
     axios.defaults.headers.common['Authorization'] = token;
     axios.defaults.headers.common.Authorization = token;
