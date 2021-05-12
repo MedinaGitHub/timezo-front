@@ -1217,8 +1217,13 @@ p.cright {
     background: url(./img/order.svg) no-repeat center/contain;
 }
 /** mobile fecha**/
-.country__date{
+.date--box__extra{
     display: none;
+}
+
+.hour{
+    text-align: -webkit-center;
+    margin: 10px;
 }
 
 /* 
@@ -1953,4 +1958,12 @@ width: 100%;
 
 .list-footer li {
     padding: 10px;
+}
+
+.CopyFLags{
+    color: rgb(130, 102, 226);
+    font-size: 24px;
+    margin-left: 31px;
+    /* margin-top: 29px; */
+    position: absolute;
 }

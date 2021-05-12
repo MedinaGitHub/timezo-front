@@ -1,12 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Header } from './Header';
 import { Signup } from './Signup'
 import Form from './Form'
-import { Logo } from '../Logo';
 import { Link } from "react-router-dom";
-import { ScheduleList } from './ScheduleList';
 import moment from 'moment';
-
 
 export default function CreateEvent() {
     const [value, setValue] = useState(false);
@@ -14,13 +11,11 @@ export default function CreateEvent() {
     const openModalSet = (val) => { setValue(val) }
     const changeGoalTimeSet = (val) => { setVGoalTime(val) }
 
-
     return (
         <main>
             <Signup valueOpen={value} openModalSet={openModalSet} />
             <Header openModalSet={openModalSet} />
             <Form openModalSet={openModalSet} changeGoalTimeSet={changeGoalTimeSet} />
-            <ScheduleList goal_time={goal_time} />
             <div class="bg__full"></div>
             <div>
                 <ul className='list-footer'>

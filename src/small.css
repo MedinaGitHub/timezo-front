@@ -234,4 +234,8 @@
     header .logo {
         width: 94px;
     }
+
+    .CopyFLags {
+        margin-top: -3px;
+    }
 }

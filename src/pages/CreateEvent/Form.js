@@ -6,21 +6,14 @@ import { DateTimePicker, KeyboardDateTimePicker, MuiPickersUtilsProvider } from 
 import axios from '../../utils/axios';
 import Chip from '@material-ui/core/Chip';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import es from "date-fns/locale/es";
 import { words } from '../../utils/words'
 import ReCAPTCHA from "react-google-recaptcha";
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from "react-router-dom";
-//check boxes form.
-import FormLabel from '@material-ui/core/FormLabel';
-import FormControl from '@material-ui/core/FormControl';
-import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import Checkbox from '@material-ui/core/Checkbox';
-import { LensTwoTone } from '@material-ui/icons';
 import { ScheduleBody } from './ScheduleList';
 import moment from 'moment';
 
@@ -43,6 +36,7 @@ const Form = ({ openModalSet, changeGoalTimeSet }) => {
     const isAuth = useSelector(({ auth }) => auth.token !== null && typeof auth.token !== 'undefined' && auth.email != null);
     const [valueAutocomplete, setValueAutocomplete] = React.useState([]);
     const [selectedDate, handleDateChange] = useState(null);
+    const [image, setImage] = useState(null);
     const [captcha, setCaptcha] = useState(null);
     const [link, setlink] = useState()
     const [error, setError] = useState()
@@ -111,10 +105,10 @@ const Form = ({ openModalSet, changeGoalTimeSet }) => {
         setError(null)
         setLoading('Cargando...')
         let token_recaptcha = null;
-        if (!captcha) {
-            token_recaptcha = await reRef.current.executeAsync();
-            setCaptcha(token_recaptcha)
-        }
+
+        token_recaptcha = await reRef.current.executeAsync();
+        setCaptcha(token_recaptcha)
+
         var bodyFormData = new FormData();
         bodyFormData.append('token_recaptcha', captcha ? captcha : token_recaptcha);
         bodyFormData.append('_name', data._name);
@@ -123,7 +117,7 @@ const Form = ({ openModalSet, changeGoalTimeSet }) => {
         bodyFormData.append('_event_time', selectedDate);
         bodyFormData.append('_link_event', data._link_event);
         bodyFormData.append('_weekly', checkBoxes.weekly);
-        bodyFormData.append('galleryImage', data._picture[0]);
+        bodyFormData.append('galleryImage', image[0]);
         setBodyFormData(bodyFormData)// ejecuta el useEffect
 
     }
@@ -190,6 +184,7 @@ const Form = ({ openModalSet, changeGoalTimeSet }) => {
                         <div className="form--input half border picture">
                             <input type="file"
                                 id="file-4"
+                                onChange={(val) => { setImage(val.target.files) }}
                                 className="normal inputfile inputfile-3"
                                 data-multiple-caption="{count} files selected"
                                 accept=".jpg, .jpeg, .png, .gif"
@@ -201,7 +196,7 @@ const Form = ({ openModalSet, changeGoalTimeSet }) => {
                                     })}
                                 required />
                             <label for="file-4">
-                                <h6>Imagen</h6>
+                                <h6>{image ? image[0].name : 'Imagen'}</h6>
                             </label>
                             <span>Imagen</span>
                         </div>
@@ -231,11 +226,6 @@ const Form = ({ openModalSet, changeGoalTimeSet }) => {
 
                         <div class="form--input">
                             <div class="country__date">
-
-
-                                <div class="country--main">
-                                    <div class="hour">Cambie fecha & hora para recalcular</div>
-                                </div>
                                 <ScheduleBody goal_time={selectedDate || moment().toDate()} />
                             </div>
                         </div>
@@ -263,31 +253,6 @@ const Form = ({ openModalSet, changeGoalTimeSet }) => {
                                 }
                                 label="Este evento es todas las semanas"
                             />
-
-                            {/* 
-                                <div class="opt" onClick={() => showExtra()} id="btnExtra">Opciones avanzadas</div>
-
-                                    <div class="extra" id="extra">
-                                        <div class="form--check">
-                                            <label for="caca">Lorem ipsum dolor sit amet</label>
-                                            <input type="checkbox" id="caca" checked />
-                                            <span></span>
-                                        </div>
-
-                                        <div class="form--check">
-                                            <label for="caca">Consectetur adipisicing elit</label>
-                                            <input type="checkbox" id="caca" checked />
-                                            <span></span>
-                                        </div>
-                                        <div class="form--check">
-                                            <label for="caca">Laboriosam eaque ducimus eum autem</label>
-                                            <input type="checkbox" id="caca" checked />
-                                            <span></span>
-                                        </div>
-                                    </div>
-                            */}
-
-
                         </div>
                         <button type="submit" className="btn--create">{loading}!</button>
 
