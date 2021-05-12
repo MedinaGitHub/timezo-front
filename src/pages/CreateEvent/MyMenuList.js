@@ -26,6 +26,7 @@ export default function MyMenuList({ text, listItems, cbFunction }) {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
+        {console.log('safafasfsafafa',listItems)}
         {listItems.length > 0 &&
           listItems.map((item,index) => (
           < MenuItem key={item._name + index} onClick={()=>cbFunction(item)}>{item._name}</MenuItem>

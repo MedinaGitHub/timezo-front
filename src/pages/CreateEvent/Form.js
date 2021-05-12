@@ -202,18 +202,18 @@ const Form = ({ openModalSet, changeGoalTimeSet }) => {
                         <div className="form--input half border picture">
                             <input type="file"
                                 id="file-4"
-                                onChange={(val) => { setImage(val.target.files) }}
-                                className="normal inputfile inputfile-3"
+                                onChange={(val) => { val.target.files.length >0 && setImage(val.target.files) }}
+                                className={`normal inputfile inputfile-3  `} 
                                 data-multiple-caption="{count} files selected"
                                 accept=".jpg, .jpeg, .png, .gif"
                                 placeholder="Imagen"
                                 name="_picture"
-
+                                label="imagen"
                             />
                             <label for="file-4">
-                                <h6>{image ? image[0].name : 'Imagen'}</h6>
+                                <h6 className={(image ? image[0].name : 'ImagenWOW ') }>{image ? image[0].name : 'Imagen'}</h6>
                             </label>
-                            <span>Imagen</span>
+                            <span  className={(image ? image[0].name : 'ImagenWOW2') }>Imagen</span>
                         </div>
 
                         <div className="form--input half border date">

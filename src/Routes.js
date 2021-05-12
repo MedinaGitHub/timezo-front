@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 
 import { authCheckState } from './reducer/auth'
 import { Legal } from './pages/Legal';
+import RecordInfo from './pages/RecordInfo';
 
 
 const history = createBrowserHistory();
@@ -40,6 +41,11 @@ export default function Routes() {
             <Route path={['/:id_owner/:id_counter']}>
                 <Switch location={location} key={location.pathname}>
                     <ReadEvent />
+                </Switch>
+            </Route>
+            <Route path={['/recordInfo']}>
+                <Switch location={location} key={location.pathname}>
+                    <RecordInfo/>
                 </Switch>
             </Route>
         </Router>
