@@ -19,6 +19,7 @@
     "date-fns": "^2.16.1",
     "ga-4-react": "^0.1.271",
     "material-table": "^1.69.3",
+    "material-ui-popup-state": "^1.8.3",
     "moment": "^2.29.1",
     "moment-timezone": "^0.5.33",
     "react": "^17.0.1",

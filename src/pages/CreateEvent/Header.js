@@ -36,9 +36,14 @@ const Header = ({ openModalSet }) => {
                 axios.defaults.headers.common['Authorization'] = token;
                 axios.defaults.headers.common.Authorization = token;
                 const response = await axios.get(`/api/myEventList`);
-                if (response.data) {
-                    setMyEvents(response.data)
+                try {
+                    if (response.data.length > 0) {
+                        setMyEvents(response.data)
+                    }
+                } catch (error) {
+                    console.log('error', error)
                 }
+
             }
         }
         getProcedure()
@@ -52,7 +57,7 @@ const Header = ({ openModalSet }) => {
         }
     };
     const handleChangeLink = (item) => {
-            history.push(item._nick_name +'/'+item.id)
+        history.push('/'+item._nick_name + '/' + item.id)
     };
 
     const handleClose = () => {
@@ -87,8 +92,8 @@ const Header = ({ openModalSet }) => {
                         </div>
                         <div className="menu">
                             <nav >
-                          
-                                <MyMenuList  text={'Mis eventos'} listItems={myEvents} cbFunction={handleChangeLink}/>
+
+                                <MyMenuList text={'Mis eventos'} listItems={myEvents} cbFunction={handleChangeLink} />
 
                                 {location.pathname !== '/' && <Link to="/">Crear Evento</Link>}
 

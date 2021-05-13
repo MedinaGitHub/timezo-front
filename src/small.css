@@ -3,9 +3,9 @@
         overflow-x: hidden;
     }
     header {
-        width: calc(100% - 40px);
+        width: calc(100% - 25px);
         height: 50px;
-        right: 20px;
+        right: 13px;
         top: -51px;
     }
     header .logo .country {
@@ -234,8 +234,41 @@
     header .logo {
         width: 94px;
     }
-
     .CopyFLags {
         margin-top: -41px;
+    }
+    header .logo {
+        background: url(./img/logo__timezo.svg)  no-repeat 0 50%/70px !important;
+        width: 70px !important
+    }
+    header .menu{
+        padding: 0px;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    header .logo {
+        background: url(./img/favicon.svg)  no-repeat 0 50%/30px !important;
+        width: 30px !important
+    }
+    .igo .text {
+        font-size: 1em !important;
+    }
+    header  {
+        width: calc(100% - 11px);
+        right: 5px;
+        padding-left: 39px;
+        padding-right: 0px;
+    }
+    header .logo {
+        margin-left: -31px;
+        position: absolute;
+    }
+
+    .timezone {
+        font-size: 11px;
+    }
+    header nav a{
+        font-size: 10px;
     }
 }

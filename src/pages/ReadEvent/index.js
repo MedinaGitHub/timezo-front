@@ -10,12 +10,14 @@ import { TimeEvent } from './TimeEvent';
 import { LetMeKnow } from './LetMeKnow';
 import { Calendars } from './Calendars';
 import { Logo } from '../Logo';
+import { Signup } from '../CreateEvent/Signup';
 
 export default function ReadEvent() {
 
     const { id_owner, id_counter } = useParams();
     const [event_data, setEvent_data] = useState(null)
-
+    const openModalSet = (val) => { setValue(val) }
+    const [value, setValue] = useState(false);
 
     const optionsTime =
     {
@@ -55,7 +57,8 @@ export default function ReadEvent() {
     return (
         <>
             <main>
-            <Header />
+            <Signup valueOpen={value} openModalSet={openModalSet} />
+            <Header  openModalSet={openModalSet} />
                 {event_data && <>
                     <PicSide link_event={event_data._link_event} picture={event_data._picture_event} />
                 </>}
@@ -71,6 +74,7 @@ export default function ReadEvent() {
                                   description={event_data._description}
                                   categories={event_data._categories} 
                                   nick_name={event_data._nick_name}
+                                  id={event_data.id}
                                   />
                                 <TimeEvent time={event_data.time_local} weekly={event_data._weekly} weeklyTime={event_data.time_weekly} />
                                 <LetMeKnow />

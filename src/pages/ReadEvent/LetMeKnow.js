@@ -15,7 +15,7 @@ const LetMeKnow = () => {
                         <div className="hand2"></div>
                     </div>
                     <div className="text">
-                        <span>Avísales que me interesa</span>
+                        <span>Avísales que voy</span>
                         <span>Gracias!</span>
                     </div>
                 </div>

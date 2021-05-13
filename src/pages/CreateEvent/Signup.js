@@ -64,13 +64,10 @@ const Signup = ({ valueOpen = false, openModalSet }) => {
     }, [valueOpen])
 
     const responseGoogle = async (response) => {
-         
         if (response.profileObj) {
             //pegarle a la API
             //   const token = await axios.post('api/auth/google', { data: response, nickname: value });
-
             dispatch(authGoogle({ data: response, nickname: value }));
-             ;
             // console.log('token', token)
         }
     };
@@ -80,8 +77,11 @@ const Signup = ({ valueOpen = false, openModalSet }) => {
     }, [auth.error])
 
     useEffect(() => {
-        if(auth.token && auth.email){
-            openModalSet(false)
+        if (auth.token && auth.email) {
+            try {
+                openModalSet(false)
+            } catch (error) {
+            }
         }
     }, [auth.token])
 
@@ -90,8 +90,11 @@ const Signup = ({ valueOpen = false, openModalSet }) => {
     };
     const handleClose = () => {
         auth.error = ''
-        openModalSet(false)
-        setOpen(false);
+        try {
+            openModalSet(false)
+            setOpen(false);
+        } catch (error) {
+        }
     };
     const handleChange = (event) => {
         setValue(event.target.value);

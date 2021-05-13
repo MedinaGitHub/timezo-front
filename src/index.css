@@ -2004,3 +2004,17 @@ width: 100%;
 .ImagenWOW2{
     display: none;
 }
+
+.ShareThisLink:hover {
+    transform: translateY(-4px);
+    color: #fff;
+    text-decoration: none;
+}
+
+.ShareThisLink {
+
+    margin: 11px 2px 5px !important;
+    transition: all .2s ease-in-out !important;
+    padding: 11px !important;
+    border-radius: 0px !important;
+}
